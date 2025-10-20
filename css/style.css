@@ -12,6 +12,7 @@
     --dark-color: #2C3E50;      /* Texto escuro */
     --light-color: #FFFFFF;     /* Branco */
     --background-color: #F8F9FA; /* Fundo levemente cinza */
+    --error-color: #dc3545; /* Um vermelho para alertas*/
 }
 
 /* ==========================================================================
@@ -384,4 +385,33 @@ form button[type="submit"] {
     form .form-group-inline > div {
         flex: 1; /* Faz cada campo ocupar metade do espaço */
     }
+}
+
+/* ==========================================================================
+   10. Estilos de Validação de Formulário
+   ========================================================================== */
+
+/* Estilo para a mensagem de erro (oculta por padrão) */
+.error-message {
+    color: var(--error-color);
+    font-size: 0.875rem; /* 14px */
+    margin-top: 0.25rem; /* 4px */
+    text-align: left;
+    display: none; /* Oculta por padrão */
+}
+
+/* Quando o JS adicionar a classe 'invalid' ao <div> pai do input */
+form div.invalid .error-message {
+    display: block; /* Mostra a mensagem de erro */
+}
+
+form div.invalid input {
+    border-color: var(--error-color); /* Borda vermelha no input */
+    background-color: #fff8f8; /* Fundo levemente avermelhado */
+}
+
+/* Ajusta o foco para manter o estilo de erro */
+form div.invalid input:focus {
+    border-color: var(--error-color);
+    box-shadow: 0 0 5px rgba(220, 53, 69, 0.3); /* Brilho vermelho no foco */
 }
