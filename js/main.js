@@ -306,6 +306,40 @@ function navigate(path) {
 // Ponto de entrada do Script
 document.addEventListener("DOMContentLoaded", () => {
     
+    // --- NOVO CÓDIGO DO MENU ---
+    const hamburgerButton = document.getElementById("hamburger-button");
+    const sidebarNav = document.getElementById("sidebar-nav");
+    const overlay = document.getElementById("overlay");
+
+    // Função para abrir/fechar o menu
+    function toggleMenu() {
+        sidebarNav.classList.toggle("active");
+        overlay.classList.toggle("active");
+        
+        // Atualiza o aria-expanded para acessibilidade
+        const isExpanded = sidebarNav.classList.contains("active");
+        hamburgerButton.setAttribute("aria-expanded", isExpanded);
+    }
+
+    // Função para FECHAR o menu (usada pelo overlay e pelos links)
+    function closeMenu() {
+        sidebarNav.classList.remove("active");
+        overlay.classList.remove("active");
+        hamburgerButton.setAttribute("aria-expanded", "false");
+    }
+
+    // Ouve o clique no botão hambúrguer
+    if (hamburgerButton) {
+        hamburgerButton.addEventListener("click", toggleMenu);
+    }
+
+    // Ouve o clique no overlay (para fechar o menu)
+    if (overlay) {
+        overlay.addEventListener("click", closeMenu);
+    }
+    // --- FIM DO NOVO CÓDIGO DO MENU ---
+
+    
     // Ouve cliques em QUALQUER LUGAR do documento
     document.body.addEventListener("click", event => {
         const targetLink = event.target.closest("a.nav-link");
@@ -313,15 +347,13 @@ document.addEventListener("DOMContentLoaded", () => {
         if (targetLink) {
             event.preventDefault(); // Impede o recarregamento
             
-            // Pega o caminho completo (ex: /site-ong-kidstech/projetos.html)
             const path = new URL(targetLink.href).pathname;
-            
-            // Atualiza a URL na barra do navegador com o Href real do link
-            // (importante para o GitHub Pages)
             window.history.pushState({}, "", targetLink.href);
             
-            // Chama nosso roteador para carregar o novo conteúdo
-            navigate(path);
+            navigate(path); // Carrega o novo conteúdo
+
+            // NOVO: Fecha o menu lateral após clicar em um link
+            closeMenu();
         }
     });
 

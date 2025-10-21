@@ -415,3 +415,178 @@ form div.invalid input:focus {
     border-color: var(--error-color);
     box-shadow: 0 0 5px rgba(220, 53, 69, 0.3); /* Brilho vermelho no foco */
 }
+
+/* ==========================================================================
+   11. Estilos do Novo Header (Barra do Topo)
+   ========================================================================== */
+
+header {
+    /* Sobrescrevemos o padding anterior */
+    padding: 0.75rem 0; /* Um pouco menor */
+}
+
+header .container {
+    /* Usamos flexbox para alinhar os 3 itens */
+    display: flex;
+    justify-content: space-between; /* Itens nas pontas e no centro */
+    align-items: center;
+}
+
+/* Estilo do Botão Hambúrguer */
+.hamburger {
+    display: block;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1010; /* Garante que fique acima de tudo */
+}
+
+.hamburger-line {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--dark-color);
+    margin: 5px 0;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Logo no Header */
+.logo-header {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* No desktop, não precisamos do hambúrguer */
+@media (min-width: 768px) {
+    .hamburger {
+        display: none;
+    }
+}
+
+
+/* ==========================================================================
+   12. Estilos do Menu Lateral (Sidebar) e Overlay
+   ========================================================================== */
+
+.sidebar-nav {
+    position: fixed; /* Fica fixo na tela */
+    top: 0;
+    left: 0;
+    height: 100vh; /* 100% da altura da tela */
+    width: 280px; /* Largura do menu */
+    background-color: var(--dark-color);
+    padding: 2rem;
+    z-index: 2000; /* Acima de todo o conteúdo */
+    
+    /* Começa ESCONDIDO fora da tela (à esquerda) */
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* ESTADO ATIVO: Quando o JS adicionar a classe .active */
+.sidebar-nav.active {
+    transform: translateX(0); /* Move o menu para dentro da tela */
+    box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+}
+
+.logo-sidebar {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--light-color);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 2rem;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-nav li {
+    margin-bottom: 1rem;
+}
+
+.sidebar-nav a {
+    color: var(--light-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 0.5rem;
+    display: block;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.sidebar-nav a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Overlay (fundo escuro) */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1999; /* Fica abaixo do menu, mas acima do site */
+    
+    /* Começa escondido */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+/* ESTADO ATIVO: Quando o JS adicionar a classe .active */
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* ==========================================================================
+   13. Ajustes no Layout Principal
+   ========================================================================== */
+
+/* No mobile, precisamos "empurrar" o header para baixo
+   pois o menu de desktop não está mais lá */
+@media (max-width: 767px) {
+    main {
+        /* Adiciona um padding no topo do main para compensar
+           a altura do header fixo (se o header for fixo) */
+        /* Vamos manter o header estático por enquanto */
+    }
+}
+
+/* Ajusta o antigo menu de desktop que foi removido */
+@media (min-width: 768px) {
+    /* Remove o display: block que tínhamos para o menu antigo */
+    header nav {
+        display: none; 
+    }
+
+    /* Em telas grandes, o menu lateral fica VISÍVEL E FIXO */
+    .sidebar-nav {
+        transform: translateX(0); /* Menu fica visível */
+        box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+    }
+    
+    .logo-header {
+        display: none; /* Esconde o logo do topo */
+    }
+
+    /* Empurra o conteúdo principal para a direita
+       para não ficar escondido atrás do menu lateral */
+    main, header {
+        padding-left: 280px; /* Mesma largura do .sidebar-nav */
+    }
+    
+    .overlay {
+        display: none; /* Não precisamos do overlay no desktop */
+    }
+}
