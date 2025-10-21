@@ -199,7 +199,7 @@ function inicializarValidacaoFormulario() {
         let isValid = validateForm(requiredInputs);
 
         if (isValid) {
-            alert("Cadastro enviado com sucesso!");
+            alert("Cadastro enviado com sucesso! (Funcionalidade de back-end não implementada)");
             form.reset();
         }
     });
@@ -254,106 +254,90 @@ function clearAllErrors(form) {
 
 
 /* ==========================================================================
-   Motor da SPA (Single Page Application) e Roteamento 
+   Motor da SPA (Single Page Application) e Roteamento
    ========================================================================== */
 
-// Nossas rotas agora usam o nome do arquivo como chave
 const routes = {
     "index.html": getTemplateInicio,
     "projetos.html": getTemplateProjetos,
     "cadastro.html": getTemplateCadastro
 };
 
-/**
- * Extrai o nome do arquivo da URL (ex: "projetos.html")
- * @param {string} pathname - O caminho da URL (ex: /site-ong-kidstech/projetos.html)
- */
 function getRouteKey(pathname) {
     const parts = pathname.split('/');
     const file = parts[parts.length - 1];
     
-    // Se o caminho for a raiz (ex: "/" ou "/site-ong-kidstech/")
-    // ou não especificar um arquivo, carregue a index.
     if (file === "" || !file.includes(".html")) {
         return "index.html";
     }
-    return file; // ex: "projetos.html"
+    return file; 
 }
 
-/**
- * Função principal do roteador.
- * @param {string} path - O caminho da URL (ex: "/site-ong-kidstech/projetos.html")
- */
 function navigate(path) {
     const mainContent = document.querySelector("main");
     if (!mainContent) return; 
 
-    // Obtém a chave correta (ex: "projetos.html")
     const routeKey = getRouteKey(path); 
-
-    // Encontra a função de template (ou usa a 'index' como fallback)
     const renderFunction = routes[routeKey] || routes["index.html"];
     
     const newHtml = renderFunction();
     mainContent.innerHTML = newHtml;
     
-    // Se a página de cadastro foi renderizada, ative a validação.
     if (routeKey === "cadastro.html") {
         inicializarValidacaoFormulario();
     }
 }
 
-// Ponto de entrada do Script
+/* ==========================================================================
+   Ponto de Entrada Principal (DOMContentLoaded)
+   ========================================================================== */
+
 document.addEventListener("DOMContentLoaded", () => {
     
-    // --- NOVO CÓDIGO DO MENU ---
+    // --- LÓGICA DO MENU HAMBÚRGUER ---
     const hamburgerButton = document.getElementById("hamburger-button");
     const sidebarNav = document.getElementById("sidebar-nav");
     const overlay = document.getElementById("overlay");
 
-    // Função para abrir/fechar o menu
     function toggleMenu() {
-        sidebarNav.classList.toggle("active");
-        overlay.classList.toggle("active");
-        
-        // Atualiza o aria-expanded para acessibilidade
-        const isExpanded = sidebarNav.classList.contains("active");
-        hamburgerButton.setAttribute("aria-expanded", isExpanded);
+        if(sidebarNav && overlay && hamburgerButton) { // Verifica se existem
+            sidebarNav.classList.toggle("active");
+            overlay.classList.toggle("active");
+            const isExpanded = sidebarNav.classList.contains("active");
+            hamburgerButton.setAttribute("aria-expanded", isExpanded);
+        }
     }
 
-    // Função para FECHAR o menu (usada pelo overlay e pelos links)
     function closeMenu() {
-        sidebarNav.classList.remove("active");
-        overlay.classList.remove("active");
-        hamburgerButton.setAttribute("aria-expanded", "false");
+        if(sidebarNav && overlay && hamburgerButton) { // Verifica se existem
+            sidebarNav.classList.remove("active");
+            overlay.classList.remove("active");
+            hamburgerButton.setAttribute("aria-expanded", "false");
+        }
     }
 
-    // Ouve o clique no botão hambúrguer
     if (hamburgerButton) {
         hamburgerButton.addEventListener("click", toggleMenu);
     }
-
-    // Ouve o clique no overlay (para fechar o menu)
     if (overlay) {
         overlay.addEventListener("click", closeMenu);
     }
-    // --- FIM DO NOVO CÓDIGO DO MENU ---
+    // --- FIM DA LÓGICA DO MENU ---
 
-    
-    // Ouve cliques em QUALQUER LUGAR do documento
+
+    // --- LÓGICA DO SPA (ROTEAMENTO) ---
     document.body.addEventListener("click", event => {
         const targetLink = event.target.closest("a.nav-link");
 
         if (targetLink) {
-            event.preventDefault(); // Impede o recarregamento
+            event.preventDefault(); 
             
             const path = new URL(targetLink.href).pathname;
             window.history.pushState({}, "", targetLink.href);
             
-            navigate(path); // Carrega o novo conteúdo
+            navigate(path); 
 
-            // NOVO: Fecha o menu lateral após clicar em um link
-            closeMenu();
+            closeMenu(); // Fecha o menu ao navegar
         }
     });
 
