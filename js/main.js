@@ -324,6 +324,35 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     // --- FIM DA LÓGICA DO MENU ---
 
+    // --- NOVA LÓGICA DO MODO ESCURO ---
+    const themeToggle = document.getElementById("theme-toggle");
+    const body = document.body;
+    const currentTheme = localStorage.getItem("theme");
+
+    // 1. Verifica no localStorage se o modo escuro já estava ativo
+    if (currentTheme === "dark") {
+        body.classList.add("dark-mode");
+        if (themeToggle) {
+            themeToggle.checked = true; // Marca o interruptor como "ligado"
+        }
+    }
+
+    // 2. Ouve cliques no interruptor
+    if (themeToggle) {
+        themeToggle.addEventListener("change", () => {
+            if (themeToggle.checked) {
+                // Se o interruptor for ligado:
+                body.classList.add("dark-mode");
+                localStorage.setItem("theme", "dark"); // Salva a preferência
+            } else {
+                // Se o interruptor for desligado:
+                body.classList.remove("dark-mode");
+                localStorage.setItem("theme", "light"); // Salva a preferência
+            }
+        });
+    }
+    // --- FIM DA LÓGICA DO MODO ESCURO ---
+
 
     // --- LÓGICA DO SPA (ROTEAMENTO) ---
     document.body.addEventListener("click", event => {

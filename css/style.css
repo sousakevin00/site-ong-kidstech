@@ -560,3 +560,199 @@ header .container {
 
     
 }
+
+/* ==========================================================================
+   14. Estilos do Interruptor de Modo Escuro
+   ========================================================================== */
+
+.theme-switcher-wrapper {
+    position: absolute; /* Fixa no final do menu lateral */
+    bottom: 2rem;
+    left: 0;
+    width: 100%;
+    padding: 0 2rem;
+    color: var(--light-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.theme-switcher {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+}
+
+.theme-switcher input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc; /* Cor do slider desligado */
+    transition: .4s;
+    border-radius: 28px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--primary-color); /* Cor do slider ligado */
+}
+
+input:checked + .slider:before {
+    transform: translateX(22px); /* Move a bolinha */
+}
+
+/* ==========================================================================
+   15. Regras de Acessibilidade (Modo Escuro / Alto Contraste)
+   ========================================================================== */
+
+/* Transição suave de cores */
+body, .sidebar-nav, .projeto-card, input, header {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* * 1. Define as novas variáveis de CORRIGIDAS quando o <body> tem a classe "dark-mode".
+ */
+body.dark-mode {
+    /* Cores de Fundo */
+    --background-color: #1a1a1a; /* Fundo principal bem escuro */
+    --light-color: #2c2c2c; /* Fundo dos cards (antigo branco) */
+    
+    /* === CORREÇÃO DE CONTRASTE (Variáveis Claras) === */
+    
+    /* Texto principal (agora quase branco puro para legibilidade máxima) */
+    --dark-color: #f5f5f5; 
+    
+    /* Texto secundário (um pouco mais claro) */
+    --mid-gray: #c0c0c0;
+    
+    /* Cor de destaque (substituindo o azul escuro por um azul claro acessível) */
+    /* Isso afetará H2, legendas, etc. */
+    --primary-color: #58a6ff; 
+    
+    /* Cor do Logo (para contraste máximo) */
+    --logo-color: #ffffff;    /* Branco puro */
+}
+
+
+/* * 2. Aplica as novas variáveis aos elementos
+ */
+
+body.dark-mode {
+    background-color: var(--background-color);
+    color: var(--dark-color);
+}
+
+body.dark-mode .sidebar-nav {
+    background-color: #222; /* Um pouco diferente do fundo */
+    color: var(--dark-color);
+}
+
+body.dark-mode .sidebar-nav a {
+    color: var(--dark-color);
+}
+
+body.dark-mode .sidebar-nav a:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* === CORREÇÃO: Aplica a variável de logo correta === */
+body.dark-mode .logo-sidebar,
+body.dark-mode .logo-header {
+    color: var(--logo-color); /* Usa o branco puro */
+}
+
+body.dark-mode header {
+    background-color: var(--light-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .hamburger-line {
+    background-color: var(--dark-color);
+}
+
+/* Cards e Formulários */
+body.dark-mode .projeto-card,
+body.dark-mode form {
+    background-color: var(--light-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* === CORREÇÃO: Títulos e Textos de Cards e Hero === */
+
+/* 1. Corrige TODO o texto dentro da seção Hero */
+body.dark-mode #hero h1,
+body.dark-mode #hero p {
+    color: #f5f5f5; 
+}
+
+/* 2. Corrige o TÍTULO dos cards */
+body.dark-mode .projeto-card h3 {
+    color: var(--dark-color);
+}
+
+/* 3. Corrige o PARÁGRAFO dos cards */
+body.dark-mode .projeto-card p {
+    color: var(--mid-gray);
+}
+
+/* 4. Corrige o texto "Modo Escuro" no menu lateral */
+body.dark-mode .theme-switcher-wrapper span {
+    color: var(--dark-color);
+}
+
+/* 5. Corrige a cor do texto principal dos parágrafos em geral */
+body.dark-mode p {
+    color: var(--mid-gray);
+}
+/* === FIM DAS CORREÇÕES === */
+
+
+body.dark-mode input[type="text"],
+body.dark-mode input[type="email"],
+body.dark-mode input[type="tel"],
+body.dark-mode input[type="date"] {
+    background-color: #333;
+    color: var(--dark-color);
+    border-color: #444;
+}
+
+body.dark-mode input[type="text"]:focus,
+body.dark-mode input[type="email"]:focus,
+body.dark-mode input[type="tel"]:focus,
+body.dark-mode input[type="date"]:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(0, 90, 156, 0.5);
+}
+
+body.dark-mode legend {
+    color: var(--primary-color);
+}
+
+body.dark-mode #contato, 
+body.dark-mode #voluntariado, 
+body.dark-mode #doacoes {
+    background-color: #222;
+}
