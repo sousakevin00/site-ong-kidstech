@@ -465,18 +465,19 @@ header .container {
    ========================================================================== */
 
 .sidebar-nav {
-    position: fixed; /* Fica fixo na tela */
+    position: fixed; 
     top: 0;
     left: 0;
-    height: 100vh; /* 100% da altura da tela */
-    width: 280px; /* Largura do menu */
+    height: 100vh; 
+    width: 280px; 
     background-color: var(--dark-color);
-    padding: 2rem;
-    z-index: 2000; /* Acima de todo o conteúdo */
-    
-    /* Começa ESCONDIDO fora da tela (à esquerda) */
+    padding: 0 2rem; /* <--- Padding SÓ nos lados */
+    z-index: 2000; 
     transform: translateX(-100%);
     transition: transform 0.3s ease-in-out;
+    /* NOVAS LINHAS: */
+    display: flex;
+    flex-direction: column; 
 }
 
 /* ESTADO ATIVO: Quando o JS adicionar a classe .active */
@@ -492,12 +493,16 @@ header .container {
     text-decoration: none;
     display: block;
     margin-bottom: 2rem;
+    padding-top: 2rem;
 }
 
 .sidebar-nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    /* NOVAS LINHAS: */
+    flex-grow: 1; /* Faz a lista crescer e ocupar o espaço */
+    margin-bottom: 1rem; /* Espaço antes do interruptor */
 }
 
 .sidebar-nav li {
@@ -566,11 +571,11 @@ header .container {
    ========================================================================== */
 
 .theme-switcher-wrapper {
-    position: absolute; 
-    bottom: 2rem;
-    left: 0;
+    /* position: absolute; REMOVIDO */
+    /* bottom: 2rem;       REMOVIDO */
+    /* left: 0;          REMOVIDO */
     width: 100%;
-    padding: 0 2rem;
+    padding: 0 2rem; /* Mantém o padding lateral */
     color: var(--light-color);
     font-weight: 600;
     font-size: 0.9rem;
@@ -578,6 +583,9 @@ header .container {
     justify-content: space-between;
     align-items: center;
     box-sizing: border-box; 
+    /* NOVAS PROPRIEDADES: */
+    margin-top: auto;       /* Empurra para o fundo no container flex */
+    padding-bottom: 2rem;   /* Adiciona espaçamento na parte inferior */
 }
 
 .theme-switcher {
