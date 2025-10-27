@@ -571,21 +571,18 @@ header .container {
    ========================================================================== */
 
 .theme-switcher-wrapper {
-    /* position: absolute; REMOVIDO */
-    /* bottom: 2rem;       REMOVIDO */
-    /* left: 0;          REMOVIDO */
     width: 100%;
     padding: 0 2rem; /* Mantém o padding lateral */
-    color: var(--light-color);
+    color: var(--light-color); /* Pode precisar ajustar no dark mode se usar variável */
     font-weight: 600;
     font-size: 0.9rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-sizing: border-box; 
-    /* NOVAS PROPRIEDADES: */
-    margin-top: auto;       /* Empurra para o fundo no container flex */
-    padding-bottom: 2rem;   /* Adiciona espaçamento na parte inferior */
+    /* NOVOS MARGINS: */
+    margin-top: 2rem;    /* Espaço depois do logo */
+    margin-bottom: 2rem; /* Espaço antes da lista de links */
 }
 
 .theme-switcher {
