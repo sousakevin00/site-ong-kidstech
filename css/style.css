@@ -566,7 +566,7 @@ header .container {
    ========================================================================== */
 
 .theme-switcher-wrapper {
-    position: absolute; /* Fixa no final do menu lateral */
+    position: absolute; 
     bottom: 2rem;
     left: 0;
     width: 100%;
@@ -577,6 +577,7 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-sizing: border-box; 
 }
 
 .theme-switcher {
