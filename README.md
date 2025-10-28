@@ -49,22 +49,3 @@ O site da KidsTech é uma Single Page Application (SPA) desenvolvida com HTML, C
 ## 👨‍💻 Autor
 
 * **Kevin Sousa** - [GITHUB] - (<https://github.com/sousakevin00>)
-
-## ✅ Status da Atividade IV
-
-* **Controle de Versão:**
-* [X] Histórico de commits semântico e organizado.
-* [X] Uso de `branching` (feature branch) e `Pull Requests` documentados.
-* [X] Implementar sistema de `Releases`/`Tags` com versionamento semântico.
-* [X] (Opcional) Adotar fluxo GitFlow mais completo (ex: branch `develop`).
-* **Acessibilidade (WCAG 2.1 AA):**
-* [X] Estrutura HTML semântica.
-* [X] Navegação por teclado funcional com `:focus-visible`.
-* [X] Contraste de cores adequado (incluindo Modo Escuro).
-* [X] Realizar testes com leitores de tela.
-* **Otimização para Produção:**
-* [X] Minificação de CSS e JavaScript.
-* [X] Compressão de imagens.
-* [X] Implementar minificação de HTML.
-* **Documentação:**
-* [X] README profissional completo.
