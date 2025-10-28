@@ -1,6 +1,6 @@
 # Site da ONG KidsTech
 
-![KidsTech Logo](images/turma-kidstech.jpg) Repositório do projeto de website para a ONG fictícia KidsTech, desenvolvido como parte das atividades da disciplina [Nome da Disciplina - Ex: Desenvolvimento Web I] do curso [Nome do Curso - Ex: Análise e Desenvolvimento de Sistemas] na [Nome da Instituição - Ex: Faculdade XYZ].
+![KidsTech Logo](images/projeto-coding.jpg) Repositório do projeto de website para a ONG fictícia KidsTech, desenvolvido como parte das atividades da disciplina [Desenvolvimento Front-End Para Web ] do curso [Análise e Desenvolvimento de Sistemas] na [Cruzeiro do Sul Virtual].
 
 ## 📜 Descrição do Projeto
 
