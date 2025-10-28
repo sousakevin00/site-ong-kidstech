@@ -15,9 +15,9 @@ O site da KidsTech é uma Single Page Application (SPA) desenvolvida com HTML, C
 * **Menu Lateral Responsivo:** Menu estilo "hambúrguer" no mobile que se transforma em menu lateral fixo no desktop.
 * **Modo Escuro (Dark Mode):** Tema alternativo acessível com persistência da preferência do usuário via `localStorage`.
 * **Acessibilidade (WCAG 2.1 AA):**
-    * Estrutura HTML semântica.
-    * Navegação por teclado funcional com `:focus-visible`.
-    * Alto contraste no Modo Escuro.
+* Estrutura HTML semântica.
+* Navegação por teclado funcional com `:focus-visible`.
+* Alto contraste no Modo Escuro.
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -28,15 +28,19 @@ O site da KidsTech é uma Single Page Application (SPA) desenvolvida com HTML, C
 
 ## 🛠️ Como Executar o Projeto Localmente
 
-1.  Clone este repositório:
+1. Clone este repositório:
+
     ```bash
     git clone [https://github.com/sousakevin00/site-ong-kidstech.git](https://github.com/sousakevin00/site-ong-kidstech.git)
     ```
-2.  Navegue até a pasta do projeto:
+
+2. Navegue até a pasta do projeto:
+
     ```bash
     cd site-ong-kidstech
     ```
-3.  Abra o arquivo `index.html` em seu navegador, preferencialmente usando uma extensão como o "Live Server" do VS Code para visualizar corretamente o comportamento da SPA.
+
+3. Abra o arquivo `index.html` em seu navegador, preferencialmente usando uma extensão como o "Live Server" do VS Code para visualizar corretamente o comportamento da SPA.
 
 ## 📝 Estrutura de Pastas
 
@@ -44,24 +48,23 @@ O site da KidsTech é uma Single Page Application (SPA) desenvolvida com HTML, C
 
 ## 👨‍💻 Autor
 
-* **Kevin Sousa** - GITHUB - (https://github.com/sousakevin00) ## ✅ Próximos Passos (Atividade IV Pendentes)
+* **Kevin Sousa** - [GITHUB] - (<https://github.com/sousakevin00>)
 
 ## ✅ Status da Atividade IV
 
 * **Controle de Versão:**
-    * [X] Histórico de commits semântico e organizado.
-    * [X] Uso de `branching` (feature branch) e `Pull Requests` documentados.
-    * [ ] Implementar sistema de `Releases`/`Tags` com versionamento semântico.
-    * [ ] (Opcional) Adotar fluxo GitFlow mais completo (ex: branch `develop`).
+* [X] Histórico de commits semântico e organizado.
+* [X] Uso de `branching` (feature branch) e `Pull Requests` documentados.
+* [X] Implementar sistema de `Releases`/`Tags` com versionamento semântico.
+* [X] (Opcional) Adotar fluxo GitFlow mais completo (ex: branch `develop`).
 * **Acessibilidade (WCAG 2.1 AA):**
-    * [X] Estrutura HTML semântica.
-    * [X] Navegação por teclado funcional com `:focus-visible`.
-    * [X] Contraste de cores adequado (incluindo Modo Escuro).
-    * [ ] Realizar testes com leitores de tela.
+* [X] Estrutura HTML semântica.
+* [X] Navegação por teclado funcional com `:focus-visible`.
+* [X] Contraste de cores adequado (incluindo Modo Escuro).
+* [X] Realizar testes com leitores de tela.
 * **Otimização para Produção:**
-    * [X] Minificação de CSS e JavaScript.
-    * [X] Compressão de imagens.
-    * [ ] Implementar minificação de HTML.
+* [X] Minificação de CSS e JavaScript.
+* [X] Compressão de imagens.
+* [X] Implementar minificação de HTML.
 * **Documentação:**
-    * [X] README profissional completo.
-
+* [X] README profissional completo.
