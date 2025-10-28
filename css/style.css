@@ -47,6 +47,20 @@ ul {
     list-style: none; /* Remove as bolinhas das listas */
 }
 
+/* Estilo de Foco Visível (Acessibilidade WCAG 2.1) */
+:focus-visible {
+    outline: 3px solid var(--primary-color); /* Borda azul clara ao focar com Tab */
+    outline-offset: 2px; /* Pequeno espaço entre o elemento e a borda */
+    box-shadow: 0 0 0 4px rgba(88, 166, 255, 0.4); /* Brilho suave */
+    border-radius: 3px; /* Borda levemente arredondada */
+}
+
+/* Remove o outline padrão se o :focus-visible for suportado, 
+   para não ter duas bordas */
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
 /* ==========================================================================
    3. Estilização do Cabeçalho (Header)
    ========================================================================== */
